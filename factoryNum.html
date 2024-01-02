@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="number" id="num" onkeyup="numFactory()" />
+    <div id="display"></div>
+    <button onkeyup="numFactory()">display</button>
+    <script>
+      function numFactory(num) {
+        num = document.getElementById("num").value;
+        let factory;
+        factory = num;
+        for (let index = 1; index < num; index++) {
+          factory = factory * index;
+        }
+        document.getElementById("display").innerText = factory;
+      }
+    </script>
+  </body>
+</html>

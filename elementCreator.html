@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Element Creator</title>
+  </head>
+  <body>
+    <div class="container" style="padding: 20px; background-color: green"></div>
+    <div
+      class="container-blue"
+      style="padding: 20px; background-color: blue"
+    ></div>
+  </body>
+  <script>
+    function elementCreator(tag, content, place) {
+      const element = document.createElement(tag);
+      container = document.querySelector(place);
+      element.innerText = content;
+      container.appendChild(element);
+    }
+
+    elementCreator("h1", "Ahmad Abdulsalam Al-imam", ".container");
+    elementCreator("h2", "Ahmad Abdulrasheed Sheu", ".container-blue");
+    elementCreator("h3", "Ahmad Abdulrasheed Sheu", ".container");
+    elementCreator("h4", "Ahmad Abdulrasheed Sheu", ".container-blue");
+    elementCreator("h5", "Ahmad Abdulrasheed Sheu", ".container");
+    elementCreator("h6", "Ahmad Abdulrasheed Sheu", ".container-blue");
+    elementCreator("p", "Ahmad Abdulrasheed Sheu", ".container");
+    elementCreator("i", "Ahmad Abdulrasheed Sheu", ".container-blue");
+    elementCreator("blockqoute", "Ahmad Abdulrasheed Sheu", ".container");
+    elementCreator("b", "Ahmad Abdulrasheed Sheu", ".container-blue");
+  </script>
+</html>

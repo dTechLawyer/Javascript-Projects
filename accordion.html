@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accordion Project</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      rel="nofollow"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+
+    <!-- <script src=”https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js” 
+    integrity=”sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo” crossorigin=”anonymous”></script>
+    
+    <script src=”https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js”
+     integrity=”sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/” crossorigin=”anonymous”></script> -->
+    <!-- <link rel="stylesheet" href="/accordion.css" /> -->
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html {
+        overflow-y: scroll;
+      }
+      body {
+        background-color: lightgray;
+        padding: 5% 20%;
+      }
+
+      .accordion {
+        background-color: #000316;
+        color: rgb(223, 146, 5);
+        padding: 3% 10%;
+      }
+
+      li {
+        padding-bottom: 40px;
+      }
+
+      h2 {
+        padding-bottom: 20px;
+        font-size: 1.3rem;
+      }
+
+      .question {
+        display: flex;
+        justify-content: space-between;
+      }
+      .question .chevron {
+        transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+        color: rgb(223, 146, 5);
+        font-size: 2rem;
+        font-weight: 900;
+      }
+
+      .answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+        color: white;
+      }
+
+      .accordion li.open .answer {
+        max-height: 150px;
+      }
+      .accordion li.open .question .chevron {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="accordion">
+        <ul class="list-unstyled">
+          <li class="open">
+            <div class="question">
+              <h2>Will I be rich?</h2>
+              <svg
+                class="chevron"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-down"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            </div>
+            <div class="answer">
+              <p>
+                Absolutely! Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Expedita modi dolorum deleniti esse ex assumenda
+                cupiditate voluptas dolorem facilis beatae repellendus, impedit
+                consectetur architecto exercitationem pariatur! Vitae
+                consequuntur qui eligendi?
+              </p>
+            </div>
+          </li>
+          <li class="open">
+            <div class="question">
+              <h2>What is for dinner?</h2>
+              <svg
+                class="chevron"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-down"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            </div>
+            <div class="answer">
+              <p>
+                Whatever you want! Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Expedita modi dolorum deleniti esse ex
+                assumenda cupiditate voluptas dolorem facilis beatae
+                repellendus, impedit consectetur architecto exercitationem
+                pariatur! Vitae consequuntur qui eligendi?
+              </p>
+            </div>
+          </li>
+          <li class="open">
+            <div class="question">
+              <h2>Is Javascript awesome?</h2>
+              <svg
+                class="chevron"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-down"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            </div>
+            <div class="answer">
+              <p>
+                Yes! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Expedita modi dolorum deleniti esse ex assumenda cupiditate
+                voluptas dolorem facilis beatae repellendus, impedit consectetur
+                architecto exercitationem pariatur! Vitae consequuntur qui
+                eligendi?
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      // Grab everything needed
+
+      const accordion = document.querySelector(".accordion");
+      const questions = accordion.querySelectorAll(".question");
+      const items = accordion.querySelectorAll("li");
+      // Create the necessary function
+
+      function toggleAccordion() {
+        const thisItem = this.parentNode;
+
+        items.forEach((item) => {
+          if (thisItem == item) {
+            thisItem.classList.toggle("open");
+            return;
+          }
+          item.classList.remove("open");
+        });
+      }
+      // Add the eventListeners
+
+      questions.forEach((question) =>
+        question.addEventListener("click", toggleAccordion)
+      );
+    </script>
+  </body>
+</html>

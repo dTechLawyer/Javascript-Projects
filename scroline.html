@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scrolline Progress</title>
+    <style>
+      body {
+        padding: 10rem;
+        background-color: lightgray;
+      }
+      .content {
+        background-color: #efefef;
+        min-height: 30000px;
+        line-height: 3rem;
+      }
+      .scrolline {
+        height: 3px;
+        background-color: #000316;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+        border-radius: 50000px;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+  </head>
+  <body>
+    <div class="scrolline"></div>
+    <div class="container">
+      <div class="content">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Est consectetur a soluta maxime labore quas. Ipsum
+        assumenda illum iusto ab accusantium cum eum, ex adipisci, odit, minus
+        amet unde? Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Est consectetur a soluta maxime labore quas. Ipsum assumenda illum
+        iusto ab accusantium cum eum, ex adipisci, odit, minus amet unde?
+        Dolorum? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        consectetur a soluta maxime labore quas. Ipsum assumenda illum iusto ab
+        accusantium cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem
+        ipsum dolor sit amet consectetur, adipisicing elit. Est consectetur a
+        soluta maxime labore quas. Ipsum assumenda illum iusto ab accusantium
+        cum eum, ex adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor
+        sit amet consectetur, adipisicing elit. Est consectetur a soluta maxime
+        labore quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex
+        adipisci, odit, minus amet unde? Dolorum? Lorem ipsum dolor sit amet
+        consectetur, adipisicing elit. Est consectetur a soluta maxime labore
+        quas. Ipsum assumenda illum iusto ab accusantium cum eum, ex adipisci,
+        odit, minus amet unde? Dolorum?
+      </div>
+    </div>
+
+    <script>
+      // grab everything needed
+      const scrolLine = document.querySelector(".scrolline");
+
+      // create the necessary function
+
+      function scrollineBarProgressor() {
+        const windowInnerHeight = window.innerHeight;
+        const docFullHeight = document.body.clientHeight;
+        const scrooledYCoordinate = window.scrollY;
+        const scrolledPercentage =
+          (scrooledYCoordinate / (docFullHeight - windowInnerHeight)) * 100;
+        scrolLine.style.width = scrolledPercentage + "%";
+      }
+
+      function debounce(func, wait = 15, immediate) {
+        // 'private' variable for instance
+        // The returned function will be able to reference this due to closure.
+        // Each call to the returned function will share this common timer.
+        var timeout;
+
+        // Calling debounce returns a new anonymous function
+        return function () {
+          // reference the context and args for the setTimeout function
+          var context = this,
+            args = arguments;
+
+          // Should the function be called now? If immediate is true
+          //   and not already in a timeout then the answer is: Yes
+          var callNow = immediate && !timeout;
+
+          // This is the basic debounce behaviour where you can call this
+          //   function several times, but it will only execute once
+          //   (before or after imposing a delay).
+          //   Each time the returned function is called, the timer starts over.
+          clearTimeout(timeout);
+
+          // Set the new timeout
+          timeout = setTimeout(function () {
+            // Inside the timeout function, clear the timeout variable
+            // which will let the next execution run when in 'immediate' mode
+            timeout = null;
+
+            // Check if the function already ran with the immediate flag
+            if (!immediate) {
+              // Call the original function with apply
+              // apply lets you define the 'this' object as well as the arguments
+              //    (both captured before setTimeout)
+              func.apply(context, args);
+            }
+          }, wait);
+
+          // Immediate mode and no wait timer? Execute the function...
+          if (callNow) func.apply(context, args);
+        };
+      }
+
+      /////////////////////////////////
+      // DEMO:
+
+      function onMouseMove(e) {
+        console.clear();
+        console.log(e.x, e.y);
+      }
+
+      // Define the debounced function
+      var debouncedMouseMove = debounce(onMouseMove, 50);
+
+      // Call the debounced function on every mouse move
+      window.addEventListener("mousemove", debouncedMouseMove);
+
+      // add event listeners
+
+      window.addEventListener("scroll", debounce(scrollineBarProgressor));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Stopwatch Timer</title>
+
+    <link rel="stylesheet" 
+href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="nofollow"  
+integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"  crossorigin="anonymous">
+
+<script src=”https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js” 
+integrity=”sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo” crossorigin=”anonymous”></script>
+
+<script src=”https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js”
+ integrity=”sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/” crossorigin=”anonymous”></script>
+
+ <style>
+    .timer{
+        font-size: 120px;
+        font-weight: 500;
+    }
+
+    .jumbotron{
+        max-width:30% ;
+        margin: auto;
+    }
+    .btn-container{
+        display: flex;
+        column-gap: 13rem;
+    }
+ </style>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="timer">
+        <span class="minutes"> 00 </span>
+                        :
+        <span class="seconds"> 00 </span>
+      </div>
+      <div class="btn-container">
+      <button class="btn btn-success btn-lg" data-action="start">Start</button
+      ><button class="btn btn-danger btn-lg" data-action="stop">Stop</button>
+    </div>
+      <button class="btn btn-link btn-block " data-action="reset">Reset</button>
+    </div>
+
+
+    <script>
+        // get everything needed
+
+        const startButton = document.querySelector('[data-action="start"]');
+        const stopButton = document.querySelector('[data-action="stop"]');
+        const resetButton = document.querySelector('[data-action="reset"]');
+        const minutes = document.querySelector('.minutes');
+        const seconds = document.querySelector('.seconds');
+        let timeTimer = 0
+        let interval;
+        let isRunning = false;
+        
+        
+        // create the necessary function
+        
+        var init = 1
+        
+        function startTimer() {
+
+            if (isRunning){
+            return
+        }
+            isRunning =true
+            interval = setInterval(increamentTimer 
+            , 1000)
+            
+        }
+        function stopTimer() {
+
+            if (!isRunning){
+                return
+            }
+
+            isRunning = false 
+
+            clearInterval(interval)
+        }
+        function resetTimer() {
+
+    timeTimer = 0
+    minutes.innerHTML = '00';
+    seconds.innerText = '00'
+        }
+        
+        function increamentTimer(e){
+            console.log(e)
+            timeTimer++
+            const numOfMinutes = Math.floor(timeTimer / 60);
+            const numOfSeconds = timeTimer % 60;
+            minutes.innerText = pad(numOfMinutes)
+            seconds.innerText = pad(numOfSeconds)
+        
+        }
+
+        function pad(number){
+
+            if (number < 10){
+                return "0" + number;
+
+            }else{
+                return number;
+            }
+
+
+        }
+        // add event lisdteners o the 
+        
+        startButton.addEventListener('click', startTimer);
+        stopButton.addEventListener('click', stopTimer);
+        resetButton.addEventListener('click', resetTimer);
+        </script>
+  </body>
+</html>

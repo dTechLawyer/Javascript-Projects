@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function sumEvenNum(num) {
+        // declare initial value for sum
+        let sum = 0;
+        for (let index = 1; index <= num; index++) {
+          if (index % 2 == 0) {
+            sum = sum + index;
+          }
+        }
+
+        return sum;
+      }
+
+      let initialNum = 10;
+      console.log(
+        `SUM OF EVEN NUM BETWEEN 1 AND ${initialNum}=`,
+        sumEvenNum(initialNum)
+      );
+
+      //   let myname = "tosin makinde adeoye";
+      //   console.log(myname.length);
+      //   myname = myname.replaceAll(" ", "");
+      //   console.log(myname.length);
+      //   //   console.log(myname[2]);
+
+      let sentence = "I am a boy";
+      let vowels = ["a", "e", "i", "o", "u"];
+      sentence = sentence.toLowerCase();
+      sentence = sentence.replaceAll(" ", "");
+"HND/20/COM/FT/111";
+      let totalVowels = 0;
+      let totalConsonants = 0;
+
+      for (let index = 0; index < sentence.length; index++) {
+        let character = sentence[index];
+        if (vowels.includes(character)) {
+          totalVowels++;
+          // totalVowels+=1;
+          // totalVowels = totalVowels +1;
+        } else {
+          totalConsonants++;
+        }
+      }
+
+      if (num === *) {
+        
+      } 
+
+      console.log("totalVowels=>", totalVowels);
+      console.log("totalConsonants=>", totalConsonants);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <input type="text" id="input" />
+    <div id="display"></div>
+    <button onclick="reverseSentence()">Display</button>
+  </head>
+  <body>
+    <script>
+      //   for (let index = 0; index < 5; index++) {
+      //     console.log("*");
+      //     for (let j = 0; j < index; j++) {
+      //       console.log("*");
+      //       for (let k = 0; k < j; k++) {
+      //         console.log("*");
+      //         for (let l = 0; l < k; l++) {
+      //           console.log("*");
+      //           for (let m = 0; m < l; m++) {
+      //             console.log("*");
+      //           }
+      //         }
+      //       }
+      //     }
+      //   }
+
+      function reverseSentence(sentence) {
+        sentence = document.getElementById("input").value;
+        sentence = sentence.split(" ");
+        let reverse = "";
+        for (let index = 0; index < sentence.length; index++) {
+          reverse = sentence[index] + " " + reverse;
+        }
+
+        console.log(reverse);
+        document.getElementById("display").innerText = reverse;
+      }
+    </script>
+  </body>
+</html>

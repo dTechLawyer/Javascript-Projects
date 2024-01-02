@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+
+    <style>
+      body {
+        font-size: 13px;
+        background-color: deepskyblue;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        font-family: fantasy;
+        font-size: 40px;
+      }
+      form {
+        width: 40%;
+        margin: auto;
+      }
+
+      input,
+      textarea {
+        padding: 10px;
+        border: 1px solid #e5e5e5;
+        width: 100%;
+        color: #999999;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+        border-radius: 15px;
+      }
+
+      textarea {
+        width: 100%;
+        height: 150px;
+        line-height: 18px;
+      }
+
+      input:hover,
+      textarea:hover,
+      input:focus,
+      textarea:focus {
+        border-color: 1px solid #c9c9c9;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px;
+        width: 100%;
+        resize: vertical;
+      }
+
+      .form label {
+        margin-left: 10px;
+        font-family: monospace;
+      }
+      label {
+        display: block;
+        margin-bottom: 3px;
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 900;
+      }
+      .usersubmit button {
+        width: 150px;
+        height: 30px;
+        border: none;
+        border-radius: 25px;
+        background-color: #000316;
+        color: #fff;
+        border-radius: 3px;
+        transition: 1s all;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .usersubmit button:hover {
+        opacity: 0.5;
+        cursor: pointer;
+      }
+      .usercontact,
+      #contact {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="text-align: center">Contact Us</h2>
+
+    <form>
+      <p class="username">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Enter your name"
+        />
+      </p>
+
+      <p class="useremail">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="mail@example.com"
+        />
+      </p>
+
+      <p class="usercontact">
+        <label for="contact">Phone number</label>
+        <input
+          type="text"
+          name="contact"
+          id="contact"
+          value="09161224435"
+          readonly
+          style="outline: none"
+          placeholder="contact no."
+        />
+      </p>
+
+      <p class="usertext">
+        <label for="text">Comments</label>
+
+        <textarea
+          name="text"
+          id="comments"
+          placeholder="Write something to us"
+        ></textarea>
+      </p>
+
+      <p class="usersubmit">
+        <button type="button" name="submit" id="sendBtn" onclick="sendForm()">
+          Send
+        </button>
+      </p>
+    </form>
+
+    <script>
+      function sendForm() {
+        let name = document.getElementById("name").value;
+        let contact = document.getElementById("contact").value;
+        let email = document.getElementById("email").value;
+        let comments = document.getElementById("comments").value;
+        let sendBtn = document.getElementById("sendBtn");
+        let bulksmstoken =
+          "87k0N1uKcj5jp6Lc3CFp80auWp1CUQbmNKuvvFF0MUPCt8daGOKbeg7KauKU";
+
+        if (name.length < 1 || comments.length < 1 || email.length < 1) {
+          alert("All fields are required!");
+          return;
+        }
+
+        sendBtn.setAttribute("disabled", true);
+        sendBtn.innerHTML = "Sending";
+
+        const url = new URL("https://www.bulksmsnigeria.com/api/v1/sms/create");
+
+        const params = {
+          to: contact,
+          from: name,
+          body: comments,
+        };
+        Object.keys(params).forEach((key) =>
+          url.searchParams.append(key, params[key])
+        );
+
+        const headers = {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        };
+
+        let body = {
+          api_token: bulksmstoken,
+        };
+
+        fetch(url, {
+          method: "POST",
+          headers,
+          body: JSON.stringify(body),
+        }).then((response) => {
+          console.log(response.json());
+          if (response.status == 200) {
+            alert("Message sent successfully");
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("comments").value = "";
+            sendBtn.removeAttribute("disabled");
+            sendBtn.innerHTML = "Send";
+          } else {
+            sendBtn.removeAttribute("disabled");
+            sendBtn.innerHTML = "Send";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.calculatorGrid{
+    display: grid;
+    grid-template-columns: repeat(4, 70px);
+    grid-template-rows: minmax(90px, auto);
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+
+}
+.outputScreen{
+    grid-column: 1/-1;
+    background-color: #000316;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 10px;
+    letter-spacing: 3px;
+    
+
+}
+.span2{
+    grid-column: span 2;
+}
+
+button{
+    height: 50px;
+    outline: none;
+    border: 1px solid antiquewhite;
+
+}
+

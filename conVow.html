@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="input" />
+    <div id="vowel"></div>
+    <div id="cons"></div>
+    <button onclick="consVowelChecker()"></button>
+    <script>
+      const input = document.getElementById("input").value;
+      const vowel = document.getElementById("vowel");
+      const cons = document.getElementById("cons");
+
+      function consVowelChecker(sentence) {
+        let input = document.getElementById("input").value;
+        input = input.replaceAll(" ", "");
+        input = input.replaceAll("-", "");
+        input = input.toLowerCase();
+
+        console.log(input);
+
+        sentence = input;
+        const vowelInit = "aeiou";
+        let totalCons = 0;
+        let totalVows = 0;
+
+        for (let index = 0; index < sentence.length; index++) {
+          if (vowelInit.includes(sentence[index])) {
+            totalVows++;
+          } else {
+            totalCons++;
+          }
+        }
+
+        cons.innerHTML = `The total number of consonant is: ${totalCons}`;
+        vowel.innerHTML = `The total number of consonant is: ${totalVows}`;
+        
+
+        return `The total number of vowels is this sentence is: ${totalVows} while the total number of consonants is: ${totalCons}`;
+      }
+
+      // consVowelChecker(
+      //   "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia in voluptate, eius rerum consectetur quam impedit omnis obcaecati quibusdam tempore at quo, cumque et. Tempora dolores repellendus cum consectetur nihil."
+      // );
+    </script>
+  </body>
+</html>

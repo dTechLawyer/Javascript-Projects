@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function evenSum(initialNum) {
+        let sum = 0;
+        for (let index = 1; index <= initialNum; index++) {
+          if (index % 2 == 0) {
+            sum += index;
+          }
+        }
+        console.log(sum);
+      }
+
+      evenSum(50);
+
+      const totalConsonants = 0;
+      const totalVowels = 0;
+
+      function consVawelChecker(sentence) {
+        sentence = "My name is Ahmad Abdulsalam Al-Imam";
+        sentence = sentence.toLowerCase();
+        let totalConsonants = 0;
+        let totalVowels = 0;
+        const vowels = ["a", "e", "i", "o", "u"];
+        console.log(sentence);
+
+        for (let i = 0; i < sentence.length; i++) {
+          sentence = sentence.replaceAll(" ", "");
+
+          if (vowels.includes(sentence[i])) {
+            totalVowels++;
+          } else {
+            totalConsonants++;
+          }
+        }
+
+        console.log(totalVowels);
+        console.log(totalConsonants);
+      }
+
+      consVawelChecker();
+    </script>
+  </body>
+</html>

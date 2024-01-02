@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        padding-top: 100px;
+      }
+      .container {
+        width: 50%;
+        margin: auto;
+      }
+      .count {
+        display: flex;
+        column-gap: 15%;
+      }
+      input,
+      textarea {
+        width: 100%;
+        display: block;
+        resize: horizontal;
+      }
+      form {
+        width: 89%;
+      }
+      button {
+        padding: 5px 7px 5px 7px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <label for="name">Sender's ID</label>
+        <input type="text" id="sender_id" /><br /><br />
+        <label for="Phone">Phone Number</label>
+        <textarea type="tel" id="phone"></textarea>
+
+        <p><label for="message">Type your message below:</label></p>
+        <textarea
+          class="smsField"
+          name=""
+          id="message"
+          cols="30"
+          rows="10"
+          onkeyup="charCount(this)"
+        ></textarea>
+        <button type="button" id="sendBtn" onclick="submitMessage()">
+          Send
+        </button>
+      </form>
+
+      <div class="count">
+        <p id="charNum">Character entered : 0</p>
+        <p id="pgc">Number of pages : 1</p>
+        <p id="price">Cost : 2</p>
+      </div>
+    </div>
+    <script>
+      function charCount(ke) {
+        document.getElementById("charNum").innerHTML =
+          "Character entered : " + ke.value.length;
+        const pgCount = Math.floor(ke.value.length / 120) + 1;
+        document.getElementById("pgc").innerHTML =
+          "Number of pages : " + pgCount;
+        document.getElementById("price").innerHTML = "Cost : " + pgCount * 2;
+      }
+
+      function submitMessage() {
+        let bulksmstoken =
+          "87k0N1uKcj5jp6Lc3CFp80auWp1CUQbmNKuvvFF0MUPCt8daGOKbeg7KauKU";
+
+        // SmartSmsApiKey - Mr Francisv
+        let api_token =
+          "mMlf3KlPjYGcbpbyLKFCb2IKPvnAkoiOa56sO31jwhIHSlAYvzNvRLCHbEJj3pBcrzLLgEWXVfI0r7QwI6m12SGWgwFQQ1wMQh6K";
+
+        // collect values
+        let sender_id = document.getElementById("sender_id").value;
+        let phone = document.getElementById("phone").value;
+        let message = document.getElementById("message").value;
+
+        // check if any is empty
+        if (sender_id.length < 1 || phone.length < 1 || message.length < 1) {
+          alert("All fields are required.");
+          return;
+        }
+        // 09023311393,08060581863
+
+        var data = new FormData();
+        data.append("token", api_token);
+        data.append("sender", sender_id);
+        data.append("to", phone);
+        data.append("message", message);
+        data.append("type", 0);
+        data.append("routing", 3);
+
+        // disable button
+        document.getElementById("sendBtn").setAttribute("disabled", true);
+        document.getElementById("sendBtn").innerHTML =
+          "Sending please wait.....";
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === 4) {
+            let response = JSON.parse(this.responseText);
+            console.log(response);
+
+            if (response.code == 1000) {
+              alert("Message sent successfully");
+              document.getElementById("sender_id").value = "";
+              document.getElementById("phone").value = "";
+              document.getElementById("message").value = "";
+              document.getElementById("sendBtn").removeAttribute("disabled");
+              document.getElementById("sendBtn").innerHTML = "Send";
+            } else {
+              alert(response.comment);
+              document.getElementById("sendBtn").removeAttribute("disabled");
+              document.getElementById("sendBtn").innerHTML = "Send";
+            }
+          }
+        });
+
+        xhr.open(
+          "POST",
+          "https://app.smartsmssolutions.com/io/api/client/v1/sms/"
+        );
+
+        xhr.send(data);
+      }
+    </script>
+  </body>
+</html>

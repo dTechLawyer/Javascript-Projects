@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Live Bookmarker</title>
+    <!-- <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="nofollow"  
+    integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"  crossorigin="anonymous">
+    
+    <script src=”https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js” 
+    integrity=”sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo” crossorigin=”anonymous”></script>
+    
+    <script src=”https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js”
+     integrity=”sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/” crossorigin=”anonymous”></script> -->
+    <style>
+      body {
+        padding: 30px;
+        background-color: #ddd;
+        background-image: url("mauro-lima-gNtiudgCpFg-unsplash.jpg");
+        background-size: cover;
+        margin: 0;
+      }
+
+      .overlay {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        transition: 1s ease opacity;
+        pointer-events: none;
+      }
+      .floater {
+        background-color: #fff;
+        max-width: 70%;
+        height: 40px;
+        margin: auto;
+        line-height: 10px;
+        margin-bottom: 20px;
+
+        padding: 40px;
+        border-radius: 5px;
+        position: relative;
+        transition: 1s ease-in-out all;
+      }
+
+      .floater-top {
+        width: 100%;
+      }
+      .floater-top input {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding-bottom: 20px;
+        transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+      }
+
+      .floater-bottom {
+        width: 100%;
+        padding: 5px 5px;
+        border-top: 1px solid #ddd;
+      }
+      .floater-bottom button {
+        float: right;
+        background-color: rgb(41, 41, 121);
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      body.show-floater .floater {
+        transform: scale(1.1);
+      }
+      body.show-floater .floater input[type="text"] {
+        padding: 0 10px 20px 10px;
+        font-size: 0.9rem;
+      }
+      body.show-floater .overlay {
+        pointer-events: all;
+        opacity: 1;
+      }
+
+      .bookmark {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        color: #000316;
+        padding: 11px;
+        border-bottom: 1px solid #ddd;
+        max-width: 50%;
+        margin: auto;
+        text-decoration: none;
+        font-size: 13px;
+        position: relative;
+        font-family: Arial, Helvetica, sans-serif;
+        cursor: pointer;
+      }
+      .bookmark-input {
+        width: 100%;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        color: #000316;
+        transition: 0.3s;
+      }
+      .bookmark .title:hover {
+        color: #1ce;
+      }
+      .bookmark-input:focus {
+        color: black;
+      }
+
+      .bookmark .img {
+        background-color: #000316;
+        border-radius: 5px;
+        background-image: url("mauro-lima-gNtiudgCpFg-unsplash.jpg");
+        background-size: cover;
+        width: 50px;
+        height: 40px;
+        margin-right: 15px;
+        font-size: 13px;
+        position: relative;
+        font-family: Arial, Helvetica, sans-serif;
+        cursor: pointer;
+      }
+
+      .bookmark .title {
+        max-width: 60rem;
+        flex: auto;
+        word-wrap: break-word;
+        text-decoration: none;
+        cursor: pointer;
+        color: #000316;
+        transition: 0.3s;
+      }
+      .search-icon {
+        margin-left: 15px;
+      }
+
+      .bookmark .remove-icon {
+        /* position: absolute; */
+        margin-left: 15px;
+        right: 35px;
+        color: #000316;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) color;
+      }
+
+      .bookmark .remove-icon:hover {
+        font-size: 0.1px;
+        color: red;
+      }
+
+      .bookmark:first-child {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+      .bookmark:last-child {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border: none;
+      }
+      .bookmark:hover {
+        color: #1ce;
+        cursor: pointer;
+        font-size: 11px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="overlay"></div>
+      <div class="floater">
+        <form class="bookmark-form">
+          <div class="floater-top">
+            <input type="text" placeholder="What is on your mind?" /><br />
+          </div>
+          <div class="floater-bottom">
+            <button class="input-btn" type="submit">Add</button>
+          </div>
+        </form>
+      </div>
+      <div class="bookmark-list"></div>
+    </div>
+    <script>
+      // Grab the needed objects
+
+      const body = document.body;
+      let input = document.querySelector("input[type=text]");
+      const overlay = document.querySelector(".overlay");
+
+      // **************************************************************************************************************************
+      const bookmarkList = document.querySelector(".bookmark-list");
+      const bookmarkForm = document.querySelector(".bookmark-form");
+      let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+      const inputBtn = document.querySelector(".input-btn");
+      // const id = "" + new Date().getTime();
+
+      //create the necessary functions
+
+      fillBookmarksList(bookmarks);
+
+      function showFloater() {
+        body.classList.add("show-floater");
+      }
+
+      function closeFloater() {
+        if (body.classList.contains("show-floater")) {
+          body.classList.remove("show-floater");
+        }
+      }
+
+      // *************************************************************************************************************************
+
+      function createBookmark(e) {
+        e.preventDefault();
+
+        if (!input.value) {
+          alert("Please enter the correct bookmark link!");
+          return;
+        }
+
+        const title = input.value;
+        const id = "" + new Date().getTime();
+
+        const bookmark = {
+          title: title,
+          id: id,
+        };
+
+        bookmarks.push(bookmark);
+
+        fillBookmarksList(bookmarks);
+        saveBookmarks(bookmarks);
+        bookmarkForm.reset();
+        // const title = input.value;
+        // const bookmark = document.createElement("a");
+        // bookmark.className = "bookmark";
+        // bookmark.innerText = title;
+        // bookmark.style.fontFamily = "Arial, Helvetica, sans-serif";
+        // bookmarkList.appendChild(bookmark);
+        // bookmarkForm.reset();
+        inputBtn.innerText = "Add";
+      }
+
+      function fillBookmarksList(bookmarks = []) {
+        const id = "" + new Date().getTime();
+
+        const bookmarkHTML = bookmarks
+          .map((bookmark, i) => {
+            return `<div class="bookmark" " data-id="${i}" target="_blank">
+                          <div class="img"></div>
+                          <a class='title' href="https://${bookmark.title}">${bookmark.title}</a>
+
+                           <button name='data' id="${bookmark.id}" onclick="editBookmark()" class="edit-btn">Edit</button>
+                          <img src="images/trash-fill.svg" class="remove-icon" alt="">
+                          </div>`;
+
+            // <div href="https://${bookmark.title}" target="_blank" class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            // <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            // </svg></div>
+            // const link = document.getElementsByTagName("a");
+            // link.appendChild(editBtn);
+            // const editBtn = document.createElement("button");
+            // editBtn.innerText = "Edit";
+
+            //
+            // link.className = "bookmark";
+            // link.setAttribute = `'data-id = ${i}'`;
+            // const imgDiv = document.createElement("div");
+            // imgDiv.className = "img";
+            // const titleDiv = document.createElement("div");
+            // titleDiv.className = "title";
+            // titleDiv.innerText = bookmark.title;
+            // const editBtn = document.createElement("button");
+            // editBtn.innerText = "Edit";
+            // const deleteImg = document.createElement("img");
+            // deleteImg.src = '="/images/trash-fill.svg';
+            // deleteImg.className = "remove-icon";
+            // link.appendChild(imgDiv);
+            // link.appendChild(titleDiv);
+            // link.appendChild(editBtn);
+            // link.appendChild(deleteImg);
+          })
+          .join("");
+        bookmarkList.innerHTML = bookmarkHTML;
+
+        // let bookmarkHtml = "";
+
+        // for (i = 0; i < bookmarks.length; i++) {
+        //   bookmarkHtml += `<a class="bookmark" href="#"> ${bookmark[i].title}</a>`;
+        // }
+
+        // bookmarkList.innerHTML = bookmarkHtml;
+      }
+
+      function editBookmark(e) {
+        const editButton = event.target;
+        const editId = editButton.id;
+        // console.log(e);
+        // if (!event.target.matches(".edit-btn")) {
+        //   return;
+        // } else {
+        bookmarks = bookmarks.filter((bookmark) => {
+          if (bookmark.id == editId) {
+            input.value = bookmark.title;
+            return false;
+          } else {
+            return true;
+          }
+        });
+        fillBookmarksList(bookmarks);
+        saveBookmarks(bookmarks);
+        inputBtn.innerText = "Update";
+      }
+
+      // const editButton = event.target;
+      // const editId = editButton.id;
+
+      // bookmarks.forEach((bookmark) => {
+      //   if (!bookmark.id === editId) {
+      //     return;
+      //   } else {
+      //     input.value = bookmark.title;
+      //   }
+      // });
+
+      function saveBookmarks(bookmarks = []) {
+        localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+      }
+
+      function deleteBookmark(event) {
+        const target = event.target;
+        const index = event.target.parentNode.dataset.id;
+
+        if (!event.target.matches(".remove-icon")) {
+          return;
+        } else if (
+          confirm("Are you sure, you want to delete this bookmark?") === true
+        ) {
+          bookmarks.splice(index, 1);
+          fillBookmarksList(bookmarks);
+          saveBookmarks(bookmarks);
+
+          alert("Bookmark deleted successfully");
+        }
+      }
+
+      // add events listener
+
+      input.addEventListener("focusin", showFloater);
+      // input.addEventListener("focusout", closeFloater);
+      overlay.addEventListener("click", closeFloater);
+
+      // *************************************************************************************************************************
+
+      bookmarkForm.addEventListener("submit", createBookmark);
+      bookmarkList.addEventListener("click", deleteBookmark);
+      // bookmarkList.addEventListener("click", editBookmark);
+
+      // Mr Francis
+      // const makeCardTransparent = (cardClassName) => {
+      //   const card = document.getElementsByClassName(cardClassName);
+      //   if (card) {
+      //     for (var i = 0; i < card.length; i++) {
+      //       card[i].addEventListener("mouseover", () => {
+      //         card[i].classList.add("transparent");
+      //       });
+      //     }
+      //   }
+      // };
+      // makeCardTransparent("card");
+
+      // window.addEventListener("load", function () {
+      //   // var items = document.querySelector(".title");
+      //   items.addEventListener("click", function (e) {
+      //     items = event.target.parentNode.dataset;
+      //     console.log(e);
+      //     console.log(items);
+
+      //     alert("here");
+      //     document.getElementById("todo").value = e.target.value;
+      //   });
+      // });
+    </script>
+  </body>
+</html>
